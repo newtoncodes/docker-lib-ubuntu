@@ -70,9 +70,4 @@ TIMESTAMP=\$TIMESTAMP \
 " > /usr/local/bin/container-vars
 RUN chmod +x /usr/local/bin/container-vars
 
-# Ensure UTF-8
-RUN locale-gen en_US.UTF-8
-ENV LANG       en_US.UTF-8
-ENV LC_ALL     en_US.UTF-8
-
 ENV HOME /root
