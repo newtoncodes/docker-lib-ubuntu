@@ -45,3 +45,21 @@ RUN mkdir -p /run/systemd && echo 'docker' > /run/systemd/container
 
 # overwrite this with 'CMD []' in a dependent Dockerfile
 CMD ["/bin/bash"]
+
+
+# Added stuff:
+
+RUN sed -i -e 's/us.archive.ubuntu.com/archive.ubuntu.com/g' /etc/apt/sources.list \
+ && apt-get update \
+ && apt-get install -y software-properties-common python-software-properties curl nano htop iputils-ping
+
+RUN touch /etc/apt/sources.list.d/ondrej-php.list \
+ && echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main" >> /etc/apt/sources.list.d/ondrej-php.list \
+ && echo "deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main" >> /etc/apt/sources.list.d/ondrej-php.list \
+ && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
+
+RUN curl -sL https://deb.nodesource.com/setup_9.x -o nodesource_setup.sh && bash nodesource_setup.sh
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+ADD variables.sh /etc/profile.d/variables.sh
