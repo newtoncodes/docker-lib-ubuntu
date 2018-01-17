@@ -63,3 +63,16 @@ RUN curl -sL https://deb.nodesource.com/setup_9.x -o nodesource_setup.sh && bash
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD variables.sh /etc/profile.d/variables.sh
+
+RUN echo "CPU_COUNT=\$CPU_COUNT \
+CONTAINER_ID=\$CONTAINER_ID \
+TIMESTAMP=\$TIMESTAMP \
+" > /usr/local/bin/container-vars
+RUN chmod +x /usr/local/bin/container-vars
+
+# Ensure UTF-8
+RUN locale-gen en_US.UTF-8
+ENV LANG       en_US.UTF-8
+ENV LC_ALL     en_US.UTF-8
+
+ENV HOME /root
