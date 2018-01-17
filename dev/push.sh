@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-dir=$(dirname "$0")
 v="$1"
 
 if [ "$v" = "" ] || [ "$v" = "16.04" ]; then

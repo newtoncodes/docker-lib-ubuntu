@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dir=$(dirname "$0")
+dir=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)
 v="$1"
 
 if [ "$v" = "" ] || [ "$v" = "16.04" ]; then
