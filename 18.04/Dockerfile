@@ -64,3 +64,6 @@ RUN touch /etc/apt/sources.list.d/ondrej-php.list \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD variables.sh /etc/profile.d/variables.sh
+RUN echo "source /etc/profile.d/variables.sh" >> /root/.profile
+ADD variables-dump.sh /usr/local/bin/container-vars
+RUN chmod +x /usr/local/bin/container-vars

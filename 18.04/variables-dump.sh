@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "CPU_COUNT=$CPU_COUNT"
+echo "CONTAINER_ID=$CONTAINER_ID"
+echo "TIMESTAMP=$TIMESTAMP"
+echo ""
